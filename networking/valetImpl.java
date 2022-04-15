@@ -11,16 +11,16 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class valetServer {
+public class valetImpl {
   private int floorCount;
   private int maxCarPerFloor;
   private int port;
 
-  public valetServer() {
+  public valetImpl() {
     this(4, 50, 1234);
   }
 
-  public valetServer(int floorCount, int maxCarPerFloor, int port) {
+  public valetImpl(int floorCount, int maxCarPerFloor, int port) {
     this.floorCount = floorCount;
     this.maxCarPerFloor = maxCarPerFloor;
     this.port = port;
@@ -68,13 +68,13 @@ public class valetServer {
   }
 
   public static void main(String[] args) {
-    valetServer garage = null;
+    valetImpl garage = null;
     if (args.length == 3) {
-      garage = new valetServer(Integer.parseInt(args[0]), Integer.parseInt(args[1]), Integer.parseInt(args[2]));
+      garage = new valetImpl(Integer.parseInt(args[0]), Integer.parseInt(args[1]), Integer.parseInt(args[2]));
     } else if (args.length == 2)
-      garage = new valetServer(Integer.parseInt(args[0]), Integer.parseInt(args[1]), 1234);
+      garage = new valetImpl(Integer.parseInt(args[0]), Integer.parseInt(args[1]), 1234);
     else if (args.length == 0)
-      garage = new valetServer();
+      garage = new valetImpl();
     else {
       System.out.println("Need 2 command line arguments: number of floors, number of car on each floor");
       System.exit(1);

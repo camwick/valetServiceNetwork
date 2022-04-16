@@ -21,7 +21,7 @@ public class valetImpl extends UnicastRemoteObject implements valetInterface {
     this.floorCount = floorCount;
     this.maxCarPerFloor = maxCarPerFloor;
     this.port = port;
-    this.conn = DriverManager.getConnection("jdbc:sqlite:./valetDB.db");
+    this.conn = DriverManager.getConnection("jdbc:sqlite:./src/valetDB.db");
   }
 
   public int getPort() throws RemoteException {
@@ -45,6 +45,7 @@ public class valetImpl extends UnicastRemoteObject implements valetInterface {
 
       // run query
       query.executeUpdate();
+      query.close();
 
       output += "Successfully added car";
     } catch (SQLException e) {
@@ -67,9 +68,11 @@ public class valetImpl extends UnicastRemoteObject implements valetInterface {
 
       // execute query
       ResultSet result = query.executeQuery();
+      query.close();
 
       output += "Floor: " + result.getInt("floor");
       output += "Car: " + result.getString("color") + " " + result.getString("make") + " " + result.getString("model");
+      result.close();
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -89,6 +92,7 @@ public class valetImpl extends UnicastRemoteObject implements valetInterface {
 
       // execute query
       query.executeUpdate();
+      query.close();
 
       output += "Car removed from database";
     } catch (SQLException e) {
@@ -98,8 +102,16 @@ public class valetImpl extends UnicastRemoteObject implements valetInterface {
     return output;
   }
 
+  public void quit() throws RemoteException, SQLException {
+    this.conn.close();
+    System.exit(1);
+  }
+
   public static void main(String[] args) throws RemoteException, SQLException {
     valetImpl test = new valetImpl();
     System.out.println(test.getPort());
+    System.out.println(test.addCar(2, "Cameron", "Wickersham", "white", "Honda", "Civic"));
+    test.quit();
+    System.out.println("test");
   }
 }

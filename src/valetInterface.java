@@ -1,4 +1,5 @@
 import java.rmi.Remote;
+import java.sql.SQLException;
 
 public interface valetInterface extends Remote {
   public int getPort() throws java.rmi.RemoteException;
@@ -9,4 +10,6 @@ public interface valetInterface extends Remote {
   public String select(String firstName, String lastName) throws java.rmi.RemoteException;
 
   public String remove(String firstName, String lastName) throws java.rmi.RemoteException;
+
+  public void quit() throws java.rmi.RemoteException, SQLException;
 }

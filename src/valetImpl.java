@@ -9,23 +9,17 @@ import java.sql.ResultSet;
 public class valetImpl extends UnicastRemoteObject implements valetInterface {
   private int floorCount;
   private int maxCarPerFloor;
-  private int port;
   private Connection conn = null;
 
   public valetImpl() throws RemoteException, SQLException {
-    this(4, 50, 1234);
+    this(4, 50);
   }
 
-  public valetImpl(int floorCount, int maxCarPerFloor, int port) throws RemoteException, SQLException {
+  public valetImpl(int floorCount, int maxCarPerFloor) throws RemoteException, SQLException {
     super();
     this.floorCount = floorCount;
     this.maxCarPerFloor = maxCarPerFloor;
-    this.port = port;
     this.conn = DriverManager.getConnection("jdbc:sqlite:./src/valetDB.db");
-  }
-
-  public int getPort() throws RemoteException {
-    return this.port;
   }
 
   public String addCar(int floor, String firstName, String lastName, String color, String make, String model)

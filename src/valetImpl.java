@@ -103,7 +103,6 @@ public class valetImpl extends UnicastRemoteObject implements valetInterface {
 
   public static void main(String[] args) throws RemoteException, SQLException {
     valetImpl test = new valetImpl();
-    System.out.println(test.getPort());
     System.out.println(test.addCar(2, "Cameron", "Wickersham", "white", "Honda", "Civic"));
     test.quit();
     System.out.println("test");

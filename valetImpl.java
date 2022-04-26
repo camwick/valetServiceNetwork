@@ -22,6 +22,7 @@ public class valetImpl extends UnicastRemoteObject implements valetInterface {
         this.conn = DriverManager.getConnection("jdbc:sqlite:./valetDB.db");
     }
 
+    @Override
     public String addCar(int floor, String firstName, String lastName, String color, String make, String model)
             throws RemoteException {
         String output = "";
@@ -49,6 +50,7 @@ public class valetImpl extends UnicastRemoteObject implements valetInterface {
         return output;
     }
 
+    @Override
     public String select(String firstName, String lastName) throws RemoteException {
         String output = "";
 
@@ -76,6 +78,7 @@ public class valetImpl extends UnicastRemoteObject implements valetInterface {
         return output;
     }
 
+    @Override
     public String remove(String firstName, String lastName) throws RemoteException {
         String output = "";
 
@@ -98,11 +101,13 @@ public class valetImpl extends UnicastRemoteObject implements valetInterface {
         return output;
     }
 
+    @Override
     public void quit() throws RemoteException, SQLException {
         this.conn.close();
         System.exit(1);
     }
 
+    @Override
     public String test() throws RemoteException {
         return "this is a test";
     }

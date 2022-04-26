@@ -23,7 +23,7 @@ public class valetClient {
             valetInterface h = (valetInterface) Naming.lookup(registryURL);
 
             // invoke methods here...
-            h.test();
+            System.out.println(h.test());
 
         } catch (Exception e) {
             e.printStackTrace();

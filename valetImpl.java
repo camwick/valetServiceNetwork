@@ -103,8 +103,8 @@ public class valetImpl extends UnicastRemoteObject implements valetInterface {
         System.exit(1);
     }
 
-    public void test() throws RemoteException {
-        System.out.println("This is a test.");
+    public String test() throws RemoteException {
+        return "this is a test";
     }
 
     public static void main(String[] args) throws RemoteException, SQLException {

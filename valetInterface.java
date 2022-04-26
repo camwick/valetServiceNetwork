@@ -12,5 +12,5 @@ public interface valetInterface extends Remote {
 
     public void quit() throws java.rmi.RemoteException, SQLException;
 
-    public void test() throws java.rmi.RemoteException;
+    public String test() throws java.rmi.RemoteException;
 }

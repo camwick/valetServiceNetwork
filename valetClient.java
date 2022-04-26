@@ -22,6 +22,9 @@ public class valetClient {
             String registryURL = "rmi://" + hostName + ":" + portNum + "/valet";
             valetInterface h = (valetInterface) Naming.lookup(registryURL);
 
+            // invoke methods here...
+            h.test();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
